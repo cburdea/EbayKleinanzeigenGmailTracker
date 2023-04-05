@@ -45,8 +45,9 @@ def detect_new_id_and_send_email(elements):
         current_id = latest_id
         print("> New Posting detected: " + current_id)
         send_email()
+        trigger_windows_notification()
     else:
-        print("> Idle - current ID: " + current_id)
+        print("> "+ str(datetime.datetime.now()) +" Idle - current ID: " + current_id)
         
 #Send out email with GMAIL API
 def send_email():
@@ -55,7 +56,7 @@ def send_email():
     TITLE = SUBJECT
     TEXT = BODY
 
-    # Prepare actual message
+    #Prepare actual message
     message = """From: %s\nTo: %s\nSubject: %s\n\n%s
     """ % (FROM, ", ".join(TO), TITLE, TEXT)
     try:
@@ -79,4 +80,3 @@ def main():
         
 if __name__ == "__main__":
     main()
-
