@@ -1,8 +1,11 @@
 from lxml import html
+from windows_toasts import WindowsToaster, ToastText1
 import requests
 import time
 import smtplib
 import random
+import webbrowser
+import datetime
 
 #Go to the EBAY Kleinanzeigen website and create a search
 #Enter the criteria of your search
@@ -69,6 +72,15 @@ def send_email():
         print('> successfully sent the mail')
     except:
         print ("> failed to send mail, check parameters")
+
+# Trigger clickable windows notification
+def trigger_windows_notification():
+    wintoaster = WindowsToaster('New Posting on Ebay Kleinanzeigen')
+    newToast = ToastText1()
+    newToast.SetBody('New Post detected: !' + MONITORED_EBAY_KLEINANZEIGEN_URL)
+    newToast.on_activated = lambda _: webbrowser.open(MONITORED_EBAY_KLEINANZEIGEN_URL, new=0, autoraise=True)
+    wintoaster.show_toast(newToast)
+
 
 #main function that loops in a specified intervall
 def main():    
