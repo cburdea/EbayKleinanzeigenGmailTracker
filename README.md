@@ -1,6 +1,6 @@
 # Ebay Kleinanzeigen Tracker with GMAIL Notification
 
-This script is suited for everyone who prefery native email notifications without relying on EBAY Kleinanzeigen's own tracker. 
+This script is suited for everyone who prefers native email notifications without relying on EBAY Kleinanzeigen's own tracker. 
 The notifications will be send out using a Gmail account. 
 
 How to make it run: 
